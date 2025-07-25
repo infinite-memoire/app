@@ -2,7 +2,38 @@
 
 ## Project Overview
 
-Memoire is a Flutter mobile application designed for audio recording, organization, and management. The app allows users to record audio clips, organize them into chapters with topics/themes, and store them securely in the cloud.
+Memoire is an application designed for audio recording, organization, and management. 
+
+The prupose of the app is to enable the user to create a book of 100-250 pages based on audio recordings. Use cases are recording memoires, recording family history, recording the history of an organization.
+
+The mobile app and web frontend allows users to 
+- record audio clips, 
+- replaying audio clips
+- optionally organize them into chapters with topics/themes, 
+- store them securely in the cloud.
+- start the AI-powered processing
+- respond to generated follow up questions
+
+The web frontend allow the user to do all the things, the mobile app does, plus  
+- user settings, billing, invoice history 
+- editing the AI process output files
+- publishing the final output to the marketplace 
+
+The backend does
+- run the AI processing using an AI agentic system
+  - load the audio recordings
+  - transcribe them using a local STT model from huggingface
+  - store the transcripts and mark their processing status
+  - create a graph from the textual recordings
+  - load the graph into a graph database
+  - identify the main storylines in the text
+  - use this to organize the transcripts into chapters taking into account the optional user annotation
+  - annotate the text chunks with chapter numbers
+  - for each chapter load all text chunk and use them to write the chapter
+  - formulate relevant follow up questions based on the graph 
+  - store the output text in markdown format 
+- manage data for the UI display and marketplace
+- ...
 
 ### Key Features
 - User authentication (login/registration)
@@ -15,7 +46,7 @@ Memoire is a Flutter mobile application designed for audio recording, organizati
 
 ## Technology Stack
 
-### Frontend (Flutter)
+### Mobile (Flutter)
 - **Framework**: Flutter 3.x
 - **State Management**: Riverpod 2.x
 - **Navigation**: go_router
@@ -25,10 +56,14 @@ Memoire is a Flutter mobile application designed for audio recording, organizati
 - **HTTP Client**: Dio
 - **Secure Storage**: flutter_secure_storage
 
+### Web Frontend
+- extended mobile also in flutter but for web
+
 ### Backend
-- **Platform**: Python (assumed)
+- **Platform**: Python
 - **Purpose**: Data storage, manipulation, and AI components
 - **Integration**: RESTful API endpoints
+
 
 ### Cloud Services
 - **Firebase Core**: App initialization and configuration
