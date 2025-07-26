@@ -30,8 +30,12 @@ The backend does
       2. identify the main storylines in the text by creating a graph from the textual recordings
          - each node needs to have it's own temporality (when it happend expressed as an iso format date). if the information is missing, it must be asked as a follow-up question
          - each node is connected to a list of chunks
-      3. load the graph into a graph database
+      3. load the graph into a graph database (neo4j)
       4. use this to organize the transcripts into chapters taking into account the optional user annotation
+         - identify main nodes = high number of edges
+         - each main node is a chapter
+         - each secondary node is attributed to a chapter by the distance (nuber fo edges) to nearest main node
+         - a secondary node can be attributed to several chapters
       5. annotate the text chunks with chapter numbers
       6. multi agent system with tools
          - chapter writer agent
