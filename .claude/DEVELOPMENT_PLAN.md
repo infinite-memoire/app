@@ -26,8 +26,10 @@ The backend does
   - transcribe them using a local STT model from huggingface
   - store the transcripts and mark their processing status
   - processing
-      1. semantic chunking
+      1. semantic chunking of the input text using rolling window
       2. identify the main storylines in the text by creating a graph from the textual recordings
+         - each node needs to have it's own temporality. if the information is missing, it must be asked as a follow-up question
+         - each node is connected to a list of chunks
       3. load the graph into a graph database
       4. use this to organize the transcripts into chapters taking into account the optional user annotation
       5. annotate the text chunks with chapter numbers
@@ -48,7 +50,6 @@ The backend does
 - store all the output text in markdown format 
 - manage data for the UI display and marketplace
 
-!! each node needs to have it's own temporality. if the information is missing, it must be asked as a follow-up question !!
 
 ### Key Features
 - User authentication (login/registration)
