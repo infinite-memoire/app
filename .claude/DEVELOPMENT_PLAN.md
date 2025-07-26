@@ -28,7 +28,7 @@ The backend does
   - processing
       1. semantic chunking of the input text using rolling window
       2. identify the main storylines in the text by creating a graph from the textual recordings
-         - each node needs to have it's own temporality. if the information is missing, it must be asked as a follow-up question
+         - each node needs to have it's own temporality (when it happend expressed as an iso format date). if the information is missing, it must be asked as a follow-up question
          - each node is connected to a list of chunks
       3. load the graph into a graph database
       4. use this to organize the transcripts into chapters taking into account the optional user annotation
