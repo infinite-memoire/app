@@ -12,7 +12,7 @@ AgentLang is a declarative, file-centric strategy language that codifies HOW to 
 Before executing any AgentLang program:
 1. Read this discipline file completely.
 2. Check execution_state.md for any previous state.
-3. Ensure component/artifacts/ directory exists.
+3. Ensure component/artifacts/ directory exists, where the component is a project component directory in the root directory (usually backend, mobile or frontend)
 
 ## Execution Rules
 

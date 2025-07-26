@@ -33,7 +33,7 @@ The backend does
   - formulate relevant follow up questions based on the graph 
   - store the output text in markdown format 
 - manage data for the UI display and marketplace
-- ...
+- 
 
 ### Key Features
 - User authentication (login/registration)
