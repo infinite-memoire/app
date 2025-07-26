@@ -37,7 +37,8 @@ The backend does
          - each secondary node is attributed to a chapter by the distance (nuber fo edges) to nearest main node
          - a secondary node can be attributed to several chapters
       5. annotate the text chunks with chapter numbers
-      6. multi agent system with tools
+      6. If a chunk ;acks a temporal marker, ask the user.
+      7. multi agent system with tools
          - chapter writer agent
             - by default loaded with main node chunks of 1 particular main node
             - tool: load adjacent nodes
