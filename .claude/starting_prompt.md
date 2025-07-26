@@ -20,7 +20,7 @@
 
   Once you've read both files, please:
   1. Confirm you understand the discipline
-  2. Check if artifacts/ directory exists (create if needed)
+  2. Check if component/artifacts/ directory exists (create if needed)
   3. Look for any AgentLang program to execute
 
   Are you ready to be an AgentLang executor?

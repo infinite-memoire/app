@@ -5,14 +5,14 @@ This document defines the rules and process I must follow when executing AgentLa
 
 ## What is AgentLang?
 
-AgentLang is a declarative, file-centric strategy language that codifies HOW to explore and solve problems. Programs written in AgentLang orchestrate cognitive operations through a small set of verbs, with all state externalized as files (artifacts) under `./artifacts/`. The language describes HOW to think, not WHAT to think.
+AgentLang is a declarative, file-centric strategy language that codifies HOW to explore and solve problems. Programs written in AgentLang orchestrate cognitive operations through a small set of verbs, with all state externalized as files (artifacts) under `./component/artifacts/`, where the component is a project component directory in the root directory (usually backend, mobile or frontend). The language describes HOW to think, not WHAT to think.
 
 ## Pre-Execution Checklist
 
 Before executing any AgentLang program:
 1. Read this discipline file completely.
 2. Check execution_state.md for any previous state.
-3. Ensure artifacts/ directory exists.
+3. Ensure component/artifacts/ directory exists.
 
 ## Execution Rules
 
@@ -36,7 +36,7 @@ All outputs follow the pattern: `{step_id}_{variable}.{ext}`
 
 ### Rule 4: State Management
 After EACH step:
-1. Create the artifact in artifacts/.
+1. Create the artifact in component/artifacts/.
 2. Update execution_state.md with:
    - Current step number
    - Variable mapping (variable → artifact path)
@@ -66,7 +66,7 @@ For each verb, I must:
 ### Functional Composition & Dataflow
 Verbs can be nested to form a single, atomic dataflow pipeline. The output of the innermost verb is passed as an anonymous, in-memory artifact to the enclosing verb.
 - **Syntax**: `variable = verb1(verb2(verb3(input)))`
-- **Execution**: The pipeline is executed from the inside out. Only the final output artifact from the outermost verb (`verb1`) is named and saved to the `artifacts/` directory.
+- **Execution**: The pipeline is executed from the inside out. Only the final output artifact from the outermost verb (`verb1`) is named and saved to the `component/artifacts/` directory.
 - **Example**: `plan = breakdown:tree(evaluate:vote(drafts))` first runs `evaluate:vote`, then immediately feeds the resulting ranking into `breakdown:tree`.
 
 ### Artifact Projection for Conditionals
@@ -77,7 +77,7 @@ The `IF` and `WHILE` control structures can be driven by the content of artifact
 - **Example**: `WHILE evaluate:test(solution)[pass] == false:`
 
 ### IO Verb Namespace
-To separate pure cognitive operations from interactions with the external environment, an `io:` namespace is reserved for future use. These verbs may have side effects beyond the `artifacts/` directory.
+To separate pure cognitive operations from interactions with the external environment, an `io:` namespace is reserved for future use. These verbs may have side effects beyond the `component/artifacts/` directory.
 - **Examples**: `io:fetch_url`, `io:exec_shell`, `io:read_file`
 - **Discipline**: `io:` verbs must be used cautiously. Their outputs (e.g., web page content, command stdout) must always be captured in a new artifact.
 
@@ -225,7 +225,7 @@ Before marking a step complete:
   - Programs also terminate after a `select:filter` step.
 
 ### Appendix C: Glossary of Terms
-- **Artifact**: A single, immutable file in the `artifacts/` directory representing a piece of state or a cognitive output.
+- **Artifact**: A single, immutable file in the `component/artifacts/` directory representing a piece of state or a cognitive output.
 - **Cognitive Goal**: The specific, fixed intention of a verb.
 - **Composition**: Nesting verbs to form a dataflow pipeline within a single statement.
 - **Projection**: Extracting a specific value from within an artifact's content for use in a conditional.
