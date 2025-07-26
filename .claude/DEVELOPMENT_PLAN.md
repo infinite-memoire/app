@@ -48,7 +48,7 @@ The backend does
 - store all the output text in markdown format 
 - manage data for the UI display and marketplace
 
-
+!! each node needs to have it's own temporality. if the information is missing, it must be asked as a follow-up question !!
 
 ### Key Features
 - User authentication (login/registration)
