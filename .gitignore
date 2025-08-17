@@ -3,4 +3,5 @@
 .env
 
 CLAUDE.md
-.claude/settings.local.json
+.claude/*
+*.pyc
